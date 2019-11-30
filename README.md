@@ -1,15 +1,19 @@
 ## Sorting
 
-Complexity analysis of sorting random integers
+Complexity analysis on sorting random integers.
 
 ## Requirements and Dependencies:
 
-* [GNU c/c++ compiler and dependencies]
+* [GNU c/c++ compiler]
   > sudo apt install gcc
 
 * [Python2.7 and dependencies]
   > sudo apt install python2.7
+  
+* [NumPy]
   > python2.7 -m pip install numpy
+  
+* [Matplotlib]
   > python2.7 -m pip install matplotlib
 
 * [matplotlib-cpp] (Already Included)
@@ -24,9 +28,9 @@ Complexity analysis of sorting random integers
 2.  Execution:
   > ./a.out 9000
 
-    Command-line arguements:
+Command-line arguements:
     
-      * argv[1]   : Max No. of elements to be sorted       
+  * argv[1]   : Max No. of elements to be sorted       
 
 
 ## Analysis:
