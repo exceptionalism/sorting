@@ -1,4 +1,4 @@
-## Sorting
+# Sorting
 
 Complexity analysis of sorting random integers
 
@@ -15,26 +15,54 @@ Complexity analysis of sorting random integers
 * [matplotlib-cpp] (Already Included)
     https://github.com/lava/matplotlib-cpp
 
+## Usage
 
-## Usage:
+1. Compilation:
 
-1.  Compilation:
    > g++ main.cpp -std=c++14 -I/usr/include/python2.7 -lpython2.7
 
-2.  Execution:
+2. Execution:
+
   > ./a.out 9000
 
     Command-line arguements:
     
       * argv[1]   : Max No. of elements to be sorted       
 
+## Analysis
 
-## Analysis:
+* Analysis on 9K Random Integers:
 
-* Analysis on 9K Elements:
+![Sorting_9K](https://github.com/exceptionalism/sorting/blob/master/outputs/plot_9K_random.png)
 
-![Sorting_9K](https://github.com/exceptionalism/sorting/blob/master/plot_9K.png)
+* Analysis on 1M Random Integers:
 
-* Analysis on 1M Elements:
+![Sorting_1M](https://github.com/exceptionalism/sorting/blob/master/outputs/plot_1M_random.png)
 
-![Sorting_1M](https://github.com/exceptionalism/sorting/blob/master/plot_1M.png)
+* Analysis on 1M Random Integers:
+
+![Sorting_1M](https://github.com/exceptionalism/sorting/blob/master/outputs/plot_1M_random.png)
+
+* Bubble Sort:
+
+![bubbleSort](https://github.com/exceptionalism/sorting/blob/master/outputs/bubbleSort.png)
+
+* Selection Sort:
+
+![selectionSort](https://github.com/exceptionalism/sorting/blob/master/outputs/selectionSort.png)
+
+* Insertion Sort:
+
+![insertionSort](https://github.com/exceptionalism/sorting/blob/master/outputs/insertionSort.png)
+
+* Merge Sort:
+
+![mergeSort](https://github.com/exceptionalism/sorting/blob/master/outputs/mergeSort.png)
+
+* Heap Sort:
+
+![heapSort](https://github.com/exceptionalism/sorting/blob/master/outputs/heapSort.png)
+
+* Quick Sort:
+
+![quickSort](https://github.com/exceptionalism/sorting/blob/master/outputs/quickSort.png)

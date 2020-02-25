@@ -11,10 +11,12 @@ using namespace std::chrono;
 
 // Array of Functions
 typedef void (*ArrayOfSorts)(vector<int> &ar);
-// ArrayOfSorts sorts[] = {bubble_sort, selection_sort, insertion_sort, quick_sort, merge_sort, heap_sort};
-// string sortNames[] = {"bubble_sort", "selection_sort", "insertion_sort", "quick_sort", "merge_sort", "heap_sort"};
-ArrayOfSorts sorts[] = {bubble_sort};
-string sortNames[] = {"bubble_sort"};
+ArrayOfSorts sorts[] = {bubble_sort, selection_sort, insertion_sort, quick_sort, merge_sort, heap_sort};
+string sortNames[] = {"bubble_sort", "selection_sort", "insertion_sort", "quick_sort", "merge_sort", "heap_sort"};
+
+// Check one sort
+// ArrayOfSorts sorts[] = {heap_sort};
+// string sortNames[] = {"heap_sort"};
 
 typedef int (*ArrayOfCases)();
 ArrayOfCases cases[] = {ordered, reverseOrdered, std::rand};
