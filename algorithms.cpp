@@ -41,13 +41,14 @@ void selection_sort(std::vector<int> &arr)
 
     for (int i = 0; i < length; i++)
     {
-        int min = i;
+        int lowestNumberIndex = i;
         for (int j = i + 1; j < length; j++)
         {
-            if (arr[j] < arr[min])
-                min = j;
+            if (arr[j] < arr[lowestNumberIndex])
+                lowestNumberIndex = j; // Update Lowest
         }
-        _swap(arr[i], arr[min]);
+        if (arr[i] != arr[lowestNumberIndex])   // not same or equal
+            _swap(arr[i], arr[lowestNumberIndex]);
     }
     return;
 }
@@ -56,7 +57,7 @@ void insertion_sort(std::vector<int> &arr)
 {
     int length = arr.size();
     int key, backwardIndex;
-    for (int forwardIndex = 1; forwardIndex < length; forwardIndex++)
+    for (int forwardIndex = 1; forwardIndex < length; forwardIndex++)   // From second element
     {
         key = arr[forwardIndex];      //take value
         backwardIndex = forwardIndex; // backwardIndex checks for key's position in backward direction
@@ -71,10 +72,10 @@ void insertion_sort(std::vector<int> &arr)
 
 int partition(vector<int> &values, int leftIndex, int rightIndex)
 {
-    int pivotIndex = leftIndex + (rightIndex - leftIndex) / 2;
+    int pivotIndex = leftIndex + (rightIndex - leftIndex) / 2;  // Middle-most index
     int pivotValue = values[pivotIndex];
     int temp;
-    while (leftIndex <= rightIndex)
+    while (leftIndex <= rightIndex) // Collision Course
     {
         while (values[leftIndex] < pivotValue)
             leftIndex++;

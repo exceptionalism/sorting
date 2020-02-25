@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "algorithms.cpp"
+#include "utils.cpp"
 
 #include "matplotlibcpp.h"
 namespace plt = matplotlibcpp;
@@ -10,8 +11,14 @@ using namespace std::chrono;
 
 // Array of Functions
 typedef void (*ArrayOfSorts)(vector<int> &ar);
-ArrayOfSorts sorts[] = {bubble_sort, selection_sort, insertion_sort, quick_sort, merge_sort, heap_sort};
-string sortNames[] = {"bubble_sort", "selection_sort", "insertion_sort", "quick_sort", "merge_sort", "heap_sort"};
+// ArrayOfSorts sorts[] = {bubble_sort, selection_sort, insertion_sort, quick_sort, merge_sort, heap_sort};
+// string sortNames[] = {"bubble_sort", "selection_sort", "insertion_sort", "quick_sort", "merge_sort", "heap_sort"};
+ArrayOfSorts sorts[] = {bubble_sort};
+string sortNames[] = {"bubble_sort"};
+
+typedef int (*ArrayOfCases)();
+ArrayOfCases cases[] = {ordered, reverseOrdered, std::rand};
+string caseNames[] = {"Ordered", "Reverse ordered", "Random"};
 
 // Generates 'num' number of linearly spaced integers ranging from 'start' to 'end'
 vector<int> linspace(int start, int end, int num)
@@ -69,8 +76,22 @@ void Plot(int sortIndex, bool savePdf = false)
         plt::save("plot.pdf");
 }
 
+// Plots graph based on 'plotVariables' and 'Sort' function for each case
+void casePlot(int caseIndex, bool savePdf = false)
+{
+    plt::named_plot(caseNames[caseIndex], Graph.N, Graph.Time);
+    plt::title("N vs. Time Graph");
+    plt::legend();
+
+    plt::xlabel("No. of elements");
+    plt::ylabel("Time in milliseconds");
+
+    if (savePdf)
+        plt::save("plot.pdf");
+}
+
 // Takes index of a sort and plots graph for N elements of that single sort
-void Sort(int sortIndex, bool plot = false, bool savePdf = false)
+void Sort(int sortIndex, int caseIndex, bool plot = false, bool savePdf = false)
 {
     vector<int>::iterator NoOfElements;
     Graph.Time.clear();
@@ -78,7 +99,7 @@ void Sort(int sortIndex, bool plot = false, bool savePdf = false)
     for (NoOfElements = (Graph.N).begin(); NoOfElements < (Graph.N).end(); NoOfElements++)
     {
         vector<int> arr(*NoOfElements);
-        generate(arr.begin(), arr.end(), std::rand);
+        generate(arr.begin(), arr.end(), cases[caseIndex]);
 
         auto start = high_resolution_clock::now();
         sorts[sortIndex](arr);
@@ -90,7 +111,7 @@ void Sort(int sortIndex, bool plot = false, bool savePdf = false)
         (Graph.Time).push_back(Duration);
 
         if (plot)
-            Plot(sortIndex, savePdf);
+            casePlot(caseIndex, savePdf);
 
         // if(Duration >= 13000)
         //     break;
@@ -105,8 +126,10 @@ int main(int argc, char *argv[])
         input();
 
     int numSorts = sizeof(sortNames) / sizeof(sortNames[0]);
+    int numCases = sizeof(caseNames) / sizeof(caseNames[0]);
     for (int sortIndex = 0; sortIndex < numSorts; sortIndex++)
-        Sort(sortIndex, true); // plot = true
+        for (int caseIndex = 0; caseIndex < numCases; caseIndex++)
+            Sort(sortIndex, caseIndex, true); // plot = true
 
     plt::show();
     return 0;
