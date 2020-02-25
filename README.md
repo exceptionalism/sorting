@@ -2,7 +2,7 @@
 
 Complexity analysis of sorting random integers
 
-## Requirements and Dependencies:
+## Requirements and Dependencies
 
 * [GNU c/c++ compiler and dependencies]
   > sudo apt install gcc
